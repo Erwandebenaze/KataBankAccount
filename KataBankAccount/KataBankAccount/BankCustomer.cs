@@ -16,5 +16,10 @@ namespace KataBankAccount
         {
             Account.DepositMoney(moneyToSave);
         }
+
+        public double MakeAWithdraw(double moneyToRetrieve)
+        {
+            return Account.WithdrawMoney(moneyToRetrieve);
+        }
     }
 }

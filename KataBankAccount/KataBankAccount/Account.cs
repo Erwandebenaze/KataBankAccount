@@ -14,5 +14,10 @@ namespace KataBankAccountTest
         {
             return _amount;
         }
+
+        internal double WithdrawMoney(double moneyToRetrieve)
+        {
+            return _amount -= moneyToRetrieve;
+        }
     }
 }
