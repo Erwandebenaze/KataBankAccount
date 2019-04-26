@@ -12,14 +12,12 @@ namespace KataBankAccountTest
         [TestMethod]
         public void In_order_to_save_money_customer_can_deposit_money_on_his_account()
         {
-            Account account = new Account();
-            Customer customer = new Customer(account);
-
+            BankCustomer bankCustomer = new BankCustomer(new Account());
             double moneyToSave = 10;
-            customer.MakeADeposit(moneyToSave);
 
+            bankCustomer.MakeADeposit(moneyToSave);
 
-            customer.Account.GetAmount().Should().Be(10);
+            bankCustomer.Account.GetAmount().Should().Be(10);
         }
     }
 }

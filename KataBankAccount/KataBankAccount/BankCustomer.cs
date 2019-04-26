@@ -3,9 +3,9 @@ using KataBankAccountTest;
 
 namespace KataBankAccount
 {
-    public class Customer
+    public class BankCustomer
     {
-        public Customer(Account account)
+        public BankCustomer(Account account)
         {
             Account = account;
         }
