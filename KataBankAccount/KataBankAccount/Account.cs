@@ -19,7 +19,8 @@ namespace KataBankAccountTest
         {
             if (IsEnoughtMoneyToWithdraw(moneyToRetrieve))
             {
-                return _amount -= moneyToRetrieve;
+                _amount -= moneyToRetrieve;
+                return moneyToRetrieve;
             }
             else
             {
