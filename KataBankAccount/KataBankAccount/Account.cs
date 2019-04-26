@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KataBankAccountTest
+namespace KataBankAccount
 {
     public class Account
     {
@@ -13,17 +13,19 @@ namespace KataBankAccountTest
         {
             _operations = new List<Operation>();
         }
-        internal void DepositMoney(double moneyToSave)
+        internal void DepositMoney(double moneyToSave, DateTime operationDate)
         {
             _amount += moneyToSave;
-            _operations.Add(new Operation(_operations.Count));
+            double balance = moneyToSave;
+            _operations.Add(new Operation(OperationName.Deposit, operationDate, _amount, balance));
         }
-        internal double WithdrawMoney(double moneyToRetrieve)
+        internal double WithdrawMoney(double moneyToRetrieve, DateTime operationDate)
         {
             if (IsEnoughtMoneyToWithdraw(moneyToRetrieve))
             {
                 _amount -= moneyToRetrieve;
-                _operations.Add(new Operation(_operations.Count));
+                double balance = -moneyToRetrieve;
+                _operations.Add(new Operation(OperationName.Withdraw, operationDate, _amount, balance));
                 return moneyToRetrieve;
             }
             else
@@ -32,12 +34,13 @@ namespace KataBankAccountTest
             }
         }
 
-        internal double WithdrawAllSaved()
+        internal double WithdrawAllSaved(DateTime operationDate)
         {
             double moneyToRetrieve = _amount;
+            double balance = -moneyToRetrieve;
             _amount = 0;
 
-            _operations.Add(new Operation(_operations.Count));
+            _operations.Add(new Operation(OperationName.WithdrawAll, operationDate, _amount, balance));
             return moneyToRetrieve;
         }
 

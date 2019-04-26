@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text;
-using KataBankAccountTest;
 
 namespace KataBankAccount
 {
     public class BankCustomer
     {
+
         public BankCustomer(Account account)
         {
             Account = account;
@@ -13,19 +13,19 @@ namespace KataBankAccount
 
         public Account Account { get; }
 
-        public void MakeADeposit(double moneyToSave)
+        public void MakeADeposit(double moneyToSave, DateTime operationDate)
         {
-            Account.DepositMoney(moneyToSave);
+            Account.DepositMoney(moneyToSave, operationDate);
         }
 
-        public double Withdraw(double moneyToRetrieve)
+        public double Withdraw(double moneyToRetrieve, DateTime operationDate)
         {
-            return Account.WithdrawMoney(moneyToRetrieve);
+            return Account.WithdrawMoney(moneyToRetrieve, operationDate);
         }
 
-        public double WithdrawAllSaves()
+        public double WithdrawAllSaves(DateTime operationDate)
         {
-            return Account.WithdrawAllSaved();
+            return Account.WithdrawAllSaved(operationDate);
         }
 
         public StringBuilder SeeOperationsOfAccount()

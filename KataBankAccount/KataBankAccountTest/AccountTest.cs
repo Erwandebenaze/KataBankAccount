@@ -15,7 +15,8 @@ namespace KataBankAccountTest
             BankCustomer bankCustomer = new BankCustomer(new Account());
             double moneyToSave = 10;
 
-            bankCustomer.MakeADeposit(moneyToSave);
+            DateTime actualDate = DateTime.Now;
+            bankCustomer.MakeADeposit(moneyToSave, actualDate);
 
             bankCustomer.Account.GetAmountSaved().Should().Be(10);
         }
@@ -24,11 +25,12 @@ namespace KataBankAccountTest
         public void US_2_in_order_to_retrieve_his_money_customer_can_withdraw_from_his_account()
         {
             BankCustomer bankCustomer = new BankCustomer(new Account());
+            DateTime actualDate = DateTime.Now;
             double moneyToRetrieve = 5;
             double moneyToSave = 20;
-            bankCustomer.MakeADeposit(moneyToSave);
+            bankCustomer.MakeADeposit(moneyToSave, actualDate);
 
-            double moneyRetrieved = bankCustomer.Withdraw(moneyToRetrieve);
+            double moneyRetrieved = bankCustomer.Withdraw(moneyToRetrieve, actualDate);
 
             moneyRetrieved.Should().Be(5);
         }
@@ -41,9 +43,10 @@ namespace KataBankAccountTest
             BankCustomer bankCustomer = new BankCustomer(new Account());
             double moneyToRetrieve = 50;
             double moneyToSave = 20;
-            bankCustomer.MakeADeposit(moneyToSave);
+            DateTime actualDate = DateTime.Now;
+            bankCustomer.MakeADeposit(moneyToSave, actualDate);
 
-            double moneyRetrieved = bankCustomer.Withdraw(moneyToRetrieve);
+            double moneyRetrieved = bankCustomer.Withdraw(moneyToRetrieve, actualDate);
         }
 
         [TestMethod]
@@ -52,9 +55,10 @@ namespace KataBankAccountTest
             BankCustomer bankCustomer = new BankCustomer(new Account());
             double moneyToRetrieve = 5;
             double moneyToSave = 20;
-            bankCustomer.MakeADeposit(moneyToSave);
+            DateTime actualDate = DateTime.Now;
+            bankCustomer.MakeADeposit(moneyToSave, actualDate);
 
-            double moneyRetrieved = bankCustomer.Withdraw(moneyToRetrieve);
+            double moneyRetrieved = bankCustomer.Withdraw(moneyToRetrieve, actualDate);
 
             bankCustomer.Account.GetAmountSaved().Should().Be(15);
         }
@@ -64,9 +68,10 @@ namespace KataBankAccountTest
         {
             BankCustomer bankCustomer = new BankCustomer(new Account());
             double moneyToSave = 20;
-            bankCustomer.MakeADeposit(moneyToSave);
+            DateTime actualDate = DateTime.Now;
+            bankCustomer.MakeADeposit(moneyToSave, actualDate);
 
-            double moneyRetrieved = bankCustomer.WithdrawAllSaves();
+            double moneyRetrieved = bankCustomer.WithdrawAllSaves(actualDate);
 
             moneyRetrieved.Should().Be(20);
         }

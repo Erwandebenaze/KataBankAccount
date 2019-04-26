@@ -1,15 +1,34 @@
-﻿namespace KataBankAccountTest
+﻿using System;
+using System.Text;
+
+namespace KataBankAccount
 {
     public class Operation
     {
-        private readonly int _number;
-        public Operation(int number)
+        private readonly OperationName _name;
+        private readonly DateTime _date;
+        private readonly double _amount;
+        private readonly double _balance;
+
+        public Operation(OperationName name, DateTime operationDate, double amount, double balance)
         {
-            _number = number;
+            _name = name;
+            _date = operationDate;
+            _amount = amount;
+            _balance = balance;
         }
+
         public override string ToString()
         {
-            return "Operation number " +_number;
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append("Operation : " + _name);
+            stringBuilder.Append(", ");
+            stringBuilder.Append("date : " + _date);
+            stringBuilder.Append(", ");
+            stringBuilder.Append("amount after operation : " + _amount);
+            stringBuilder.Append(", ");
+            stringBuilder.Append("balance : " + _balance);
+            return stringBuilder.ToString();
         }
     }
 }
