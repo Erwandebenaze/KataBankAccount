@@ -5,32 +5,35 @@ namespace KataBankAccount
 {
     public class BankCustomer
     {
-
+        private readonly Account _account;
         public BankCustomer(Account account)
         {
-            Account = account;
+            _account = account;
         }
-
-        public Account Account { get; }
-
+        
         public void MakeADeposit(double moneyToSave, DateTime operationDate)
         {
-            Account.DepositMoney(moneyToSave, operationDate);
+            _account.DepositMoney(moneyToSave, operationDate);
         }
 
         public double Withdraw(double moneyToRetrieve, DateTime operationDate)
         {
-            return Account.WithdrawMoney(moneyToRetrieve, operationDate);
+            return _account.WithdrawMoney(moneyToRetrieve, operationDate);
         }
 
         public double WithdrawAllSaves(DateTime operationDate)
         {
-            return Account.WithdrawAllSaved(operationDate);
+            return _account.WithdrawAllSaved(operationDate);
         }
 
         public StringBuilder SeeOperationsOfAccount()
         {
-            return Account.SeeOperations();
+            return _account.SeeOperations();
+        }
+
+        public double AmountOnAccount()
+        {
+            return _account.GetAmountSaved();
         }
     }
 }

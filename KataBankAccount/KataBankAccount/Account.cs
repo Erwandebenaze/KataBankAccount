@@ -6,8 +6,8 @@ namespace KataBankAccount
 {
     public class Account
     {
-        private double _amount;
-        private IList<Operation> _operations;
+        private double _amount = 0;
+        private readonly IList<Operation> _operations;
 
         public Account()
         {
@@ -57,7 +57,7 @@ namespace KataBankAccount
 
         internal StringBuilder SeeOperations()
         {
-            StringBuilder stringBuilder= new StringBuilder("List of operations :");
+            StringBuilder stringBuilder = new StringBuilder("List of operations :");
             stringBuilder.AppendLine();
             foreach (Operation operation in _operations)
             {

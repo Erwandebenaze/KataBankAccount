@@ -21,12 +21,9 @@ namespace KataBankAccount
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append("Operation : " + _name);
-            stringBuilder.Append(", ");
-            stringBuilder.Append("date : " + _date);
-            stringBuilder.Append(", ");
-            stringBuilder.Append("amount after operation : " + _amount);
-            stringBuilder.Append(", ");
+            stringBuilder.Append("Operation : " + _name + ", ");
+            stringBuilder.Append("date : " + _date + ", ");
+            stringBuilder.Append("amount after operation : " + _amount + ", ");
             stringBuilder.Append("balance : " + _balance);
             return stringBuilder.ToString();
         }

@@ -18,7 +18,7 @@ namespace KataBankAccountTest
             DateTime actualDate = DateTime.Now;
             bankCustomer.MakeADeposit(moneyToSave, actualDate);
 
-            bankCustomer.Account.GetAmountSaved().Should().Be(10);
+            bankCustomer.AmountOnAccount().Should().Be(10);
         }
 
         [TestMethod]
@@ -60,7 +60,7 @@ namespace KataBankAccountTest
 
             double moneyRetrieved = bankCustomer.Withdraw(moneyToRetrieve, actualDate);
 
-            bankCustomer.Account.GetAmountSaved().Should().Be(15);
+            bankCustomer.AmountOnAccount().Should().Be(15);
         }
 
         [TestMethod]
