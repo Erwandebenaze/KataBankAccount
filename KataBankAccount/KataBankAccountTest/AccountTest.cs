@@ -28,7 +28,7 @@ namespace KataBankAccountTest
             double moneyToSave = 20;
             bankCustomer.MakeADeposit(moneyToSave);
 
-            double moneyRetrieved = bankCustomer.MakeAWithdraw(moneyToRetrieve);
+            double moneyRetrieved = bankCustomer.Withdraw(moneyToRetrieve);
 
             moneyRetrieved.Should().Be(5);
         }
@@ -43,7 +43,7 @@ namespace KataBankAccountTest
             double moneyToSave = 20;
             bankCustomer.MakeADeposit(moneyToSave);
 
-            double moneyRetrieved = bankCustomer.MakeAWithdraw(moneyToRetrieve);
+            double moneyRetrieved = bankCustomer.Withdraw(moneyToRetrieve);
         }
 
         [TestMethod]
@@ -54,9 +54,21 @@ namespace KataBankAccountTest
             double moneyToSave = 20;
             bankCustomer.MakeADeposit(moneyToSave);
 
-            double moneyRetrieved = bankCustomer.MakeAWithdraw(moneyToRetrieve);
+            double moneyRetrieved = bankCustomer.Withdraw(moneyToRetrieve);
 
             bankCustomer.Account.GetAmountSaved().Should().Be(15);
+        }
+
+        [TestMethod]
+        public void A_customer_can_retrieve_all_his_money_saved_on_his_account()
+        {
+            BankCustomer bankCustomer = new BankCustomer(new Account());
+            double moneyToSave = 20;
+            bankCustomer.MakeADeposit(moneyToSave);
+
+            double moneyRetrieved = bankCustomer.WithdrawAllSaves();
+
+            moneyRetrieved.Should().Be(20);
         }
     }
 }

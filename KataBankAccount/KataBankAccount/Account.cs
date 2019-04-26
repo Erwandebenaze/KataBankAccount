@@ -28,6 +28,13 @@ namespace KataBankAccountTest
             }
         }
 
+        internal double WithdrawAllSaved()
+        {
+            double moneyToRetrieve = _amount;
+            _amount = 0;
+            return moneyToRetrieve;
+        }
+
         private bool IsEnoughtMoneyToWithdraw(double moneyToWithdraw)
         {
             return _amount > moneyToWithdraw;
