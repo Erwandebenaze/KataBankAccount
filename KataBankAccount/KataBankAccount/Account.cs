@@ -10,14 +10,26 @@ namespace KataBankAccountTest
             _amount += moneyToSave;
         }
 
-        public object GetAmount()
+        public double GetAmountSaved()
         {
             return _amount;
         }
 
         internal double WithdrawMoney(double moneyToRetrieve)
         {
-            return _amount -= moneyToRetrieve;
+            if (IsEnoughtMoneyToWithdraw(moneyToRetrieve))
+            {
+                return _amount -= moneyToRetrieve;
+            }
+            else
+            {
+                throw new InvalidOperationException("You can not withdraw this amount because the amount of the money you saved is lower.");
+            }
+        }
+
+        private bool IsEnoughtMoneyToWithdraw(double moneyToWithdraw)
+        {
+            return _amount > moneyToWithdraw;
         }
     }
 }

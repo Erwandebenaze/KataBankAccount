@@ -17,7 +17,7 @@ namespace KataBankAccountTest
 
             bankCustomer.MakeADeposit(moneyToSave);
 
-            bankCustomer.Account.GetAmount().Should().Be(10);
+            bankCustomer.Account.GetAmountSaved().Should().Be(10);
         }
 
         [TestMethod]
@@ -31,6 +31,19 @@ namespace KataBankAccountTest
             double moneyRetrieved = bankCustomer.MakeAWithdraw(moneyToRetrieve);
 
             moneyRetrieved.Should().Be(15);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException),
+            "You can not withdraw this amount because the amount of the money you saved is lower.")]
+        public void A_bank_customer_can_not_retrieve_more_than_he_saved()
+        {
+            BankCustomer bankCustomer = new BankCustomer(new Account());
+            double moneyToRetrieve = 50;
+            double moneyToSave = 20;
+            bankCustomer.MakeADeposit(moneyToSave);
+
+            double moneyRetrieved = bankCustomer.MakeAWithdraw(moneyToRetrieve);
         }
     }
 }
