@@ -8,8 +8,12 @@ namespace KataBankAccount
     {
         private double _amount = 0;
         private readonly IList<Operation> _operations;
+        public static Account Of()
+        {
+            return new Account();
+        }
 
-        public Account()
+        private Account()
         {
             _operations = new List<Operation>();
         }
@@ -17,7 +21,7 @@ namespace KataBankAccount
         {
             _amount += moneyToSave;
             double balance = moneyToSave;
-            _operations.Add(new Operation(OperationName.Deposit, operationDate, _amount, balance));
+            _operations.Add(Operation.Of(OperationName.Deposit, operationDate, _amount, balance));
         }
         internal double WithdrawMoney(double moneyToRetrieve, DateTime operationDate)
         {
@@ -25,12 +29,12 @@ namespace KataBankAccount
             {
                 _amount -= moneyToRetrieve;
                 double balance = -moneyToRetrieve;
-                _operations.Add(new Operation(OperationName.Withdraw, operationDate, _amount, balance));
+                _operations.Add(Operation.Of(OperationName.Withdraw, operationDate, _amount, balance));
                 return moneyToRetrieve;
             }
             else
             {
-                throw new InvalidOperationException("You can not withdraw this amount because the amount of the money you saved is lower.");
+                throw new InvalidOperationException("Withdraw impossible, the saved is lower than amount wanted.");
             }
         }
 
@@ -40,11 +44,11 @@ namespace KataBankAccount
             double balance = -moneyToRetrieve;
             _amount = 0;
 
-            _operations.Add(new Operation(OperationName.WithdrawAll, operationDate, _amount, balance));
+            _operations.Add(Operation.Of(OperationName.WithdrawAll, operationDate, _amount, balance));
             return moneyToRetrieve;
         }
 
-        public double GetAmountSaved()
+        internal double GetAmountSaved()
         {
             return _amount;
         }
@@ -61,7 +65,7 @@ namespace KataBankAccount
             stringBuilder.AppendLine();
             foreach (Operation operation in _operations)
             {
-                stringBuilder.AppendLine(operation.ToString());
+                stringBuilder.AppendLine(operation.Print());
             }
 
             return stringBuilder;

@@ -11,7 +11,7 @@ namespace KataBankAccount
         static void Main(string[] args)
         {
 
-            BankCustomer customer = new BankCustomer(new Account());
+            BankCustomer customer = new BankCustomer(Account.Of());
             Console.WriteLine("Account manager");
             Console.WriteLine();
 

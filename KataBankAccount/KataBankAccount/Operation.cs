@@ -9,8 +9,13 @@ namespace KataBankAccount
         private readonly DateTime _date;
         private readonly double _amount;
         private readonly double _balance;
+        public static Operation Of(OperationName name, DateTime operationDate, double amount, double balance)
+        {
+            return new Operation(name, operationDate, amount, balance);
+        }
 
-        public Operation(OperationName name, DateTime operationDate, double amount, double balance)
+
+        private Operation(OperationName name, DateTime operationDate, double amount, double balance)
         {
             _name = name;
             _date = operationDate;
@@ -18,7 +23,7 @@ namespace KataBankAccount
             _balance = balance;
         }
 
-        public override string ToString()
+        public string Print()
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("Operation : " + _name + ", ");
