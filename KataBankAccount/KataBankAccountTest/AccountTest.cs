@@ -10,7 +10,7 @@ namespace KataBankAccountTest
     public class AccountTest
     {
         [TestMethod]
-        public void In_order_to_save_money_customer_can_deposit_money_on_his_account()
+        public void US_1_in_order_to_save_money_customer_can_deposit_money_on_his_account()
         {
             BankCustomer bankCustomer = new BankCustomer(new Account());
             double moneyToSave = 10;
@@ -21,7 +21,7 @@ namespace KataBankAccountTest
         }
 
         [TestMethod]
-        public void In_order_to_retrieve_his_money_customer_can_withdraw_from_his_account()
+        public void US_2_in_order_to_retrieve_his_money_customer_can_withdraw_from_his_account()
         {
             BankCustomer bankCustomer = new BankCustomer(new Account());
             double moneyToRetrieve = 5;
@@ -36,7 +36,7 @@ namespace KataBankAccountTest
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException),
             "You can not withdraw this amount because the amount of the money you saved is lower.")]
-        public void A_bank_customer_can_not_retrieve_more_than_he_saved()
+        public void US_2_a_bank_customer_can_not_retrieve_more_than_he_saved()
         {
             BankCustomer bankCustomer = new BankCustomer(new Account());
             double moneyToRetrieve = 50;
@@ -47,7 +47,7 @@ namespace KataBankAccountTest
         }
 
         [TestMethod]
-        public void When_a_customer_retrieve_money_the_amountSaved_on_the_account_is_exact()
+        public void US_2_when_a_customer_retrieve_money_the_amountSaved_on_the_account_is_exact()
         {
             BankCustomer bankCustomer = new BankCustomer(new Account());
             double moneyToRetrieve = 5;
@@ -60,7 +60,7 @@ namespace KataBankAccountTest
         }
 
         [TestMethod]
-        public void A_customer_can_retrieve_all_his_money_saved_on_his_account()
+        public void US_2_a_customer_can_retrieve_all_his_money_saved_on_his_account()
         {
             BankCustomer bankCustomer = new BankCustomer(new Account());
             double moneyToSave = 20;

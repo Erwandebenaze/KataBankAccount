@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using KataBankAccountTest;
 
 namespace KataBankAccount
@@ -17,9 +18,19 @@ namespace KataBankAccount
             Account.DepositMoney(moneyToSave);
         }
 
-        public double MakeAWithdraw(double moneyToRetrieve)
+        public double Withdraw(double moneyToRetrieve)
         {
             return Account.WithdrawMoney(moneyToRetrieve);
+        }
+
+        public double WithdrawAllSaves()
+        {
+            return Account.WithdrawAllSaved();
+        }
+
+        public StringBuilder SeeOperationsOfAccount()
+        {
+            return Account.SeeOperations();
         }
     }
 }
