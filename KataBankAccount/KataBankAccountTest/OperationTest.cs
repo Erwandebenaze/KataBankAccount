@@ -14,7 +14,7 @@ namespace KataBankAccountTest
         [TestMethod]
         public void US_3_in_order_to_check_his_operation_a_customer_can_see_them_with_operation_date_amount_balance()
         {
-            BankCustomer bankCustomer = new BankCustomer(Account.Of());
+            BankCustomer bankCustomer = new BankCustomer();
             double moneyToSave = 20;
             DateTime actualDate = DateTime.Now;
             bankCustomer.MakeADeposit(moneyToSave, actualDate);

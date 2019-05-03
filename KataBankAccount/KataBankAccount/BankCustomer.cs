@@ -6,9 +6,9 @@ namespace KataBankAccount
     public class BankCustomer
     {
         private readonly Account _account;
-        public BankCustomer(Account account)
+        public BankCustomer()
         {
-            _account = account;
+            _account = new Account();
         }
         
         public void MakeADeposit(double moneyToSave, DateTime operationDate)

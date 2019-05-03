@@ -8,12 +8,8 @@ namespace KataBankAccount
     {
         private double _amount = 0;
         private readonly IList<Operation> _operations;
-        public static Account Of()
-        {
-            return new Account();
-        }
 
-        private Account()
+        internal Account()
         {
             _operations = new List<Operation>();
         }

@@ -11,7 +11,7 @@ namespace KataBankAccount
         static void Main(string[] args)
         {
 
-            BankCustomer customer = new BankCustomer(Account.Of());
+            BankCustomer customer = new BankCustomer();
             Console.WriteLine("Account manager");
             Console.WriteLine();
 
@@ -34,7 +34,7 @@ namespace KataBankAccount
 
             Console.WriteLine("Withdraw all");
             inYourhands = customer.WithdrawAllSaves( DateTime.Now);
-            Console.WriteLine("You have " + inYourhands + "in your hands");
+            Console.WriteLine("You have " + inYourhands + " in your hands");
             Console.WriteLine("You have " + customer.AmountOnAccount() + " on your account");
 
             Console.WriteLine();
