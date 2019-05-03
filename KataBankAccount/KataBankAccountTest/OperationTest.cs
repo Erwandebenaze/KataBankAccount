@@ -15,11 +15,11 @@ namespace KataBankAccountTest
         public void US_3_in_order_to_check_his_operation_a_customer_can_see_them_with_operation_date_amount_balance()
         {
             BankCustomer bankCustomer = new BankCustomer();
-            double moneyToSave = 20;
+            Amount moneyToSave = Amount.Of(20);
             DateTime actualDate = DateTime.Now;
             bankCustomer.MakeADeposit(moneyToSave, actualDate);
 
-            double moneyRetrieved = bankCustomer.WithdrawAllSaves(actualDate);
+            Amount moneyRetrieved = bankCustomer.WithdrawAllSaves(actualDate);
             bankCustomer.MakeADeposit(moneyToSave, actualDate);
 
             StringBuilder stringBuilder = new StringBuilder("List of operations :");
@@ -40,7 +40,7 @@ namespace KataBankAccountTest
             stringBuilder.Append(", ");
             stringBuilder.Append("amount after operation : 0");
             stringBuilder.Append(", ");
-            stringBuilder.Append("balance : " + -moneyToSave);
+            stringBuilder.Append("balance : " + moneyToSave.GetOppositeAmount());
 
             stringBuilder.AppendLine();
 

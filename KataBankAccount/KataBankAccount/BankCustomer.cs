@@ -11,17 +11,17 @@ namespace KataBankAccount
             _account = new Account();
         }
         
-        public void MakeADeposit(double moneyToSave, DateTime operationDate)
+        public void MakeADeposit(Amount amount, DateTime operationDate)
         {
-            _account.DepositMoney(moneyToSave, operationDate);
+            _account.DepositMoney(amount, operationDate);
         }
 
-        public double Withdraw(double moneyToRetrieve, DateTime operationDate)
+        public Amount Withdraw(Amount amount, DateTime operationDate)
         {
-            return _account.WithdrawMoney(moneyToRetrieve, operationDate);
+            return _account.WithdrawMoney(amount, operationDate);
         }
 
-        public double WithdrawAllSaves(DateTime operationDate)
+        public Amount WithdrawAllSaves(DateTime operationDate)
         {
             return _account.WithdrawAllSaved(operationDate);
         }
@@ -31,7 +31,7 @@ namespace KataBankAccount
             return _account.SeeOperations();
         }
 
-        public double AmountOnAccount()
+        public Amount AmountOnAccount()
         {
             return _account.GetAmountSaved();
         }

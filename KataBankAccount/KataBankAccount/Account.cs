@@ -1,30 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace KataBankAccount
 {
+
     public class Account
     {
-        private double _amount = 0;
         private readonly IList<Operation> _operations;
+        private readonly Amount _amount;
 
         internal Account()
         {
             _operations = new List<Operation>();
+            _amount = Amount.Of(0);
         }
-        internal void DepositMoney(double moneyToSave, DateTime operationDate)
+        internal void DepositMoney(Amount moneyToSave, DateTime operationDate)
         {
-            _amount += moneyToSave;
-            double balance = moneyToSave;
+            _amount.IncreaseAmount(moneyToSave);
+            Amount balance = moneyToSave;
             _operations.Add(Operation.Of(OperationName.Deposit, operationDate, _amount, balance));
         }
-        internal double WithdrawMoney(double moneyToRetrieve, DateTime operationDate)
+        internal Amount WithdrawMoney(Amount moneyToRetrieve, DateTime operationDate)
         {
             if (IsEnoughtMoneyToWithdraw(moneyToRetrieve))
             {
-                _amount -= moneyToRetrieve;
-                double balance = -moneyToRetrieve;
+                _amount.DecreaseAmount(moneyToRetrieve);
+                Amount balance = _amount.GetOppositeAmount();
                 _operations.Add(Operation.Of(OperationName.Withdraw, operationDate, _amount, balance));
                 return moneyToRetrieve;
             }
@@ -34,25 +37,25 @@ namespace KataBankAccount
             }
         }
 
-        internal double WithdrawAllSaved(DateTime operationDate)
+        internal Amount WithdrawAllSaved(DateTime operationDate)
         {
-            double moneyToRetrieve = _amount;
-            double balance = -moneyToRetrieve;
-            _amount = 0;
+            Amount moneyToRetrieve = _amount.CreateCopy();
+            Amount balance = _amount.GetOppositeAmount();
+            _amount.DecreaseAmount(_amount);
 
             _operations.Add(Operation.Of(OperationName.WithdrawAll, operationDate, _amount, balance));
             return moneyToRetrieve;
         }
 
-        internal double GetAmountSaved()
+        internal Amount GetAmountSaved()
         {
             return _amount;
         }
 
 
-        private bool IsEnoughtMoneyToWithdraw(double moneyToWithdraw)
+        private bool IsEnoughtMoneyToWithdraw(Amount moneyToWithdraw)
         {
-            return _amount > moneyToWithdraw;
+            return _amount.IsSuperiorThan(moneyToWithdraw);
         }
 
         internal StringBuilder SeeOperations()
