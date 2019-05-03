@@ -1,8 +1,7 @@
-﻿using System;
-using System.Runtime.Remoting;
-using FluentAssertions;
+﻿using FluentAssertions;
 using KataBankAccount;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace KataBankAccountTest
 {
